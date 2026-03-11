@@ -1,0 +1,137 @@
+*{
+
+    margin:0;
+    padding: 0;
+    outline: none;
+}
+
+body{
+
+
+
+
+
+
+    background: linear-gradient(45deg,#FC4668, #3F5EFB);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+
+
+
+
+
+}
+
+.container{
+    position: relative;
+
+}
+
+form{
+
+    background: rgba(255, 255, 255, .3);
+    padding: 3rem;
+    min-height: 350px;
+    border-radius: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.3) ;
+    border-top: 1px solid rgba(255, 255, 255, .3);
+     /* effet sympa à ajouter */
+     box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
+    text-align: center;
+    /* permet d'ajouter un filtre aux éléments en dessous de nous :  */
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+    -moz-backdrop-filter: blur(10px);
+    /* fonction blur en css qui veut dire le flou + on ajoute la compatibilité avec les autres navigateurs  */
+
+}
+/*modification style de la balise "p" => paragraphe*/
+p{
+    color:white;
+    font-weight: 500;
+    opacity: .7;
+    font-size: 1.4rem;
+    margin-bottom: 60px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+    
+}
+
+a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ddd;
+    text-decoration: none ;
+    font-size: 12px;
+    transition: all .3s;
+}
+
+a:hover{
+
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+    
+}
+
+input{
+
+    background: transparent;
+    border:none ;
+    border-top: 1px solid rgba(255, 255, 255, .3);
+    border-left: 1px solid rgba(255, 255, 255, .3);
+    padding: 1rem;
+    width: 200px;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur (5px);
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, .2);
+    color: white;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+    transition: all .4s;
+    margin-bottom: 2em;
+
+}
+
+::placeholder{
+    color: white;
+
+}
+
+input:hover,
+input[type="email"]:focus,
+input[type="password"]:focus {
+background: rgba(255, 255, 255, .2);
+box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, .3);
+
+}
+
+/* input[type="button"]{
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1rem;
+    width: 150px;
+} */
+
+#un{
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1rem;
+    width: 150px;
+}
+
+.titanic {
+    display: none;
+}
+.error-text {
+    color: #ffcccc; /* Un rouge très clair pour trancher avec le bleu/rose */
+    font-size: 0.8rem;
+    margin-top: -1.5em; /* Pour le rapprocher de l'input */
+    margin-bottom: 1em;
+    text-align: left;
+    padding-left: 15px;
+}

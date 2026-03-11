@@ -1,0 +1,920 @@
+/* ce que je dois faire : esssayer de ne plus oublier de reset   */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Important pour les largeurs */
+    font-family: Poppins, sans-serif;
+}
+
+
+body{
+    background: linear-gradient(45deg,#FC4668, #3F5EFB);
+    height: 100vh;
+}
+
+.dashboard-container{
+    display: flex;
+    height: 100%;
+}
+
+.sidebar{
+
+    width: 320px;
+
+    margin: 20px;
+    height: calc(100vh - 40px);
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.main-content{
+    flex:1;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    padding: 30px;
+
+    margin: 20px 20px 20px 0;
+    height: calc(100vh - 40px);
+    border-radius: 30px;
+    overflow-y: auto;
+
+}
+
+.sidebar a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 1.1rem;      
+    padding: 12px 15px;     
+    border-radius: 12px;    
+    transition: 0.3s;       
+
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+}
+
+.sidebar a:hover{
+    color: white;
+    transform: translateY(-5px); 
+    background: rgba(255, 255, 255, 0.25);
+
+}
+
+.sidebar ul{
+    list-style: none ;
+    padding-left: 20px;
+    margin-top: 30px;
+    flex: 1;
+
+}
+
+.sidebar li {
+    margin-bottom: 20px;
+}
+
+
+
+.sidebar li.active a{
+
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    opacity: 1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+header{
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+}
+.stats-container{
+
+    display: flex;
+    /* justify-content: space-around; */
+    gap: 20px;
+    margin-top: 30px ;
+
+
+}
+
+.card{
+    
+    flex: 1;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: left;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+
+
+.card h3{
+
+    font-size: 1rem;
+    font-weight: normal;
+    opacity: 0.9;
+    margin-bottom: 5px;
+
+}
+
+.card p{
+
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card span{
+
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.card:hover {
+    transform: translateY(-5px); 
+    background: rgba(255, 255, 255, 0.25);
+}
+
+
+
+
+
+
+
+
+
+.tickets-container{
+
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.5);
+    
+
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+
+    padding: 20px;
+    margin-top: 30px;
+
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+
+
+
+th,td{
+
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+
+}
+
+th{
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+}
+/* 
+
+
+
+c'est par ici 
+EEH
+EHHH
+OHHHH
+------------
+
+----
+-
+-
+-
+-
+OH */
+
+tbody tr:hover{
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.9);
+    
+    
+
+}
+
+tr:last-child td{
+    border-bottom: none;
+
+}
+
+
+/* tr:last-child td:hover{
+    transform: translateY(-5px); 
+     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.9);
+    
+
+} */
+
+
+
+.status {
+    display: inline-block;
+
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+}
+
+
+
+
+
+
+/*si j'ai un nouveau client*/
+.status.nouveau{
+    background: #3F5EFB;
+    color: white;
+    box-shadow: 0 0 10px rgba(63, 94, 251, 0.4);
+}
+
+
+.status.attente{
+
+    background: #e67e22;
+    color: white;
+    box-shadow: 0 0 10px rgba(230,126,34, 0,4);
+}
+
+.facturable{
+
+    color: #FC4668;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(252,72,104,0.5);
+}
+
+.status.inclus{
+    background: gray;
+}
+
+
+.status.en-cours{
+    background: #f1c40f;
+    box-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+    color: #333;
+}
+
+.status.termine{
+    
+    background: #2ecc71;
+    box-shadow: 0 0 10px rgba(46, 204, 0, 0.1);
+}
+
+/* .user-info{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    background: transparent;
+    border: none;
+} */
+
+
+.user-info{
+
+        display: flex;
+    align-items: center;
+    gap: 15px;
+
+    background: transparent;
+    border: none;
+
+    /* background: rgba(255, 255, 255, 0.2); */
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.user-info span{
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.profile-pic{
+
+    width: 45px;
+    height: 45px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+
+
+
+
+/*modifications que j'ajoute pour la page de projets */
+
+
+a{
+    text-decoration: none;
+}
+
+
+
+
+
+/* 1. Le Badge Client (Gris transparent et majuscules) */
+.client-badge {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+}
+
+/* 2. Nom du projet (Flexbox pour aligner l'icône et le texte) */
+.project-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+/* Les petites icônes carrées */
+/* .mini-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px; Carré arrondi
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+} */
+
+
+.mini-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px; /* Carré arrondi */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: rgb(255, 255, 255);
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.2); */
+    background: none;
+}
+
+
+
+
+
+/* Couleurs des icônes */
+/* .mini-icon.web { background: #3F5EFB; }
+.mini-icon.server { background: #f1c40f; color: #333; }
+.mini-icon.mobile { background: #2ecc71; }
+.mini-icon.design { background: #FC4668; } <--- AJOUTE CETTE LIGNE */
+/* 3. La Barre de Progression */
+.progress-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espace entre barre et texte */
+}
+
+.progress-bar-bg {
+    width: 100px; /* Longueur de la barre */
+    height: 6px;  /* Épaisseur */
+    background: rgba(255, 255, 255, 0.1); /* Fond gris sombre */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 10px;
+}
+/* Couleurs de la barre */
+.progress-fill.safe { background: #2ecc71; }    /* Vert */
+.progress-fill.warning { background: #f1c40f; } /* Jaune */
+.progress-fill.danger { background: #FC4668; }  /* Rouge */
+
+.progress-text {
+    font-size: 0.8rem;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+/* 4. Le Bouton Action (L'œil) */
+.btn-action {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Rond parfait */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.btn-action:hover {
+    background: white;
+    color: #3F5EFB; /* Devient bleu au survol */
+    transform: scale(1.1); /* Grossit un peu */
+}
+
+
+
+/* ///////////////////////////////////////
+///////////////////////////////////////
+
+
+
+modifications que j'ajoute pour la page de tickets 
+
+
+///////////////////////////////////////
+/////////////////////////////////////// */
+
+
+
+.btn-create {
+    background: #3F5EFB;
+    color: white;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: 0.3s;
+
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-create:hover{
+
+    background: #2b46c9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(63, 94, 251, 0.4);
+}
+
+.filter-btn{
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+.filter-btn:hover{
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.filter-btn.active {
+    background: white;
+    color: #3F5EFB;
+    font-weight: bold;
+}
+
+
+.filter-btn.active:hover{
+
+
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+
+
+}
+
+.priority {
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+.priority.high{color: #FC4668;}
+
+.priority.medium{
+    color: #f1c40f;
+}
+
+/* .status.en-cours:hover{
+    
+} */
+/* .priority.high:hover{
+    color: white;
+} */w
+.priority.low{
+    color: #2ecc71;
+}
+
+/* ========================================= */
+/* STYLE DETAIL TICKET (Vue Conversation)    */
+/* ========================================= */
+
+/* En-tête de la page détail */
+.ticket-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.btn-back {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+.btn-back:hover { color: white; transform: translateX(-5px); }
+
+.ticket-title {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* GRILLE PRINCIPALE (2 Colonnes) */
+.ticket-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* 2 tiers pour le chat, 1 tiers pour les infos */
+    gap: 30px;
+    height: calc(100vh - 200px); /* Pour garder de la place */
+}
+
+/* --- COLONNE GAUCHE : LE CHAT (Style Blog) --- */
+.ticket-conversation {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Scroll uniquement dans le chat */
+}
+
+/* Les Messages */
+.message-card {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    position: relative;
+    max-width: 90%;
+}
+
+/* Message du Client (Gris) */
+.msg-client {
+    background: rgba(255, 255, 255, 0.1); 
+    align-self: flex-start; /* Gauche */
+    border-bottom-left-radius: 2px;
+}
+
+/* Message Collaborateur (Bleu) */
+.msg-collab {
+    background: rgba(63, 94, 251, 0.4); 
+    align-self: flex-end; /* Droite */
+    border-bottom-right-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.msg-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    font-weight: 600;
+}
+
+.msg-body {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Logs système (centré) */
+.system-log {
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    margin: 15px 0;
+    font-style: italic;
+}
+
+/* Zone de réponse (Collée en bas) */
+.reply-area {
+    margin-top: auto; /* Pousse vers le bas */
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.reply-area textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: white;
+    resize: none;
+    height: 60px;
+    outline: none;
+    font-family: inherit;
+}
+
+.reply-btn {
+    background: #3F5EFB;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    float: right;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.reply-btn:hover { background: white; color: #3F5EFB; }
+
+
+/* --- COLONNE DROITE : INFOS --- */
+.ticket-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-card h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+.info-row label { opacity: 0.6; }
+
+/* Jauge de temps */
+.time-bar-bg {
+    width: 100%; height: 8px; background: rgba(255,255,255,0.1);
+    border-radius: 5px; margin-top: 5px; overflow: hidden;
+}
+.time-bar-fill { height: 100%; background: #f1c40f; }
+
+/* Responsive Mobile */
+/* @media (max-width: 900px) {
+    .ticket-grid { grid-template-columns: 1fr; height: auto; }
+}
+ */
+
+
+/* Bouton spécifique pour l'ajout de temps dans la sidebar */
+.btn-add-time {
+    width: 100%;
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    
+    /* C'est cette ligne qu'il faut changer : */
+    color: #ffffff; /* Blanc pur au lieu de rgba(255, 255, 255, 0.8) */
+    
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-family: inherit;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.btn-add-time:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: white;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-add-time i {
+    font-size: 0.75rem;
+}
+
+/* 
+input[type="email"]{
+    color: red;
+} */
+
+
+
+/* ========================================= */
+/* FORMULAIRE DE CRÉATION (Nouveau !)        */
+/* ========================================= */
+
+.form-container {
+    max-width: 800px; /* On limite la largeur pour que ce soit joli */
+    margin: 0 auto;   /* On centre le formulaire */
+}
+
+.glass-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Grille pour aligner les champs */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colonnes égales */
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group.full-width {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+}
+.required { color: #FC4668; }
+
+/* Styles des Inputs / Selects / Textarea */
+.glass-form input, 
+.glass-form select, 
+.glass-form textarea {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: 0.3s;
+    width: 100%;
+}
+
+/* Focus sur les champs */
+.glass-form input:focus, 
+.glass-form select:focus, 
+.glass-form textarea:focus {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: #3F5EFB;
+    box-shadow: 0 0 15px rgba(63, 94, 251, 0.2);
+}
+
+/* Astuce pour les options du select (qui sont souvent blanches par défaut) */
+.glass-form option {
+    background: #333; /* Fond gris foncé pour être lisible */
+    color: white;
+}
+
+/* Boutons d'action */
+.form-actions {
+    display: flex;
+    justify-content: flex-end; /* Alignés à droite */
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-cancel {
+    padding: 10px 20px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+.btn-cancel:hover { color: white; }
+
+.btn-submit {
+    background: #3F5EFB;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-submit:hover {
+    background: white;
+    color: #3F5EFB;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(63, 94, 251, 0.4);
+}
+
+
+
+.glass-form input::placeholder,
+.glass-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important; /* Blanc à 60% d'opacité */
+    opacity: 1; /* Nécessaire pour Firefox */
+}
+
+
+.titanic {
+    display: none !important;
+}
+.error-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffcccc; /* Un rouge très clair pour trancher avec le bleu/rose */
+    font-size: 0.8rem;
+    /* margin-top: -1.5em; Pour le rapprocher de l'input */
+    margin-bottom: 1em;
+    text-align: left;
+    padding-left: 15px;
+}

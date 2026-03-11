@@ -1,0 +1,35 @@
+
+
+// 2. Si le formulaire a bien été envoyé...
+if (isset($_POST['email']) && isset($_POST['password'])) {
+    
+    $emailSaisi = $_POST['email'];
+    $passwordSaisi = $_POST['password'];
+
+    // 3. On prépare notre question (requête) de manière ultra sécurisée
+    // On cherche dans la table "utilisateurs" la ligne où l'email correspond à ce qui a été tapé
+    $requete = $pdo->prepare("SELECT * FROM utilisateurs WHERE email = :email");
+    $requete->execute(['email' => $emailSaisi]);
+    
+    // 4. On récupère la réponse de la base de données
+    $utilisateur = $requete->fetch();
+
+    // 5. On vérifie la réponse !
+    // Si $utilisateur existe ET que le mot de passe de la base correspond au mot de passe saisi...
+    if ($utilisateur && $utilisateur['mot_de_passe'] === $passwordSaisi) {
+        
+        // echo "<h1>Connexion réussie ! Bienvenue, tu es un " . $utilisateur['role'] . " ! 🎉</h1>";
+        $_SESSION['email'] = $utilisateur['email']
+
+        $_SESSION['role'] = $utilisateur['role'];
+
+        header('Location: dashboard.php');
+        exit();
+        
+        // C'est ici que l'on fera la redirection vers le tableau de bord plus tard !
+        
+    } else {
+        echo "<h1>Aïe, adresse email ou mot de passe incorrect. 🛑</h1>";
+    }
+}
+?>
