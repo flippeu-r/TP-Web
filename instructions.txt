@@ -1,0 +1,41 @@
+http return codes:
+100 -> 199	RAS
+200 -> 299	SUCCESS
+300 -> 399	REDIRECT
+400 -> 499	ERROR -> CLIENT
+500 ->+		ERROR -> SERVER
+
+
+PLAN:
+-modale
+route api 
+-formulaire => en API
+-ajout, pas de modifications 
+affichage dynaimque (js) 
+ajout bdd
+
+
+
+
+je veux que tu ajoutes une modale en utilisant les balises html natives. tu vas créer un bouton "ajout rapide" qui va ouvrir cette modale. Positionne le bouton dans le menu. (je ne sais pas utiliser @vite, j'aimerais que tu tutilises un autre moyen pour importer un fichier html simple et de base).
+
+modale de fait 
+
+
+Je veux créer une nouvelle route API , qui permette -en plus de l'existante d'ajouter un ticket- en base de données? Créer ça  dans le fichier routes/api.php sans casser l'existant
+
+
+Je veux maintenant que le formulaire qui est dans la modale, soit connecté sur cette nouvelle route API, de telle sorte à ce que le modèle crée une ligne en base de données sans avoir à recharger la page.
+Ne gère pas l'affichage en js pour le moment
+Utilise la fonction "fetch"
+
+(dans le fichier JS que tu viens de créer, tu utilises une syntaxe que je ne connais pas, des fonctions fléchés : 
+peux*tu déclarer des fonctions classiques à la place)
+Dans le même fichier je ne comprends pas le FormData, est-ce qu'on peut utiliser quelque chose de plus standard
+
+
+
+
+
+
+
